@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const render = (Component: React.FC) => (
+  ReactDOM.render(<Component />, document.getElementById('root'))
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+declare const module: any;
+
+module.hot.accept('./App', () => {
+  render(require('./App').default);
+});
+
+render(App);
