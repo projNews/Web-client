@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './components/App';
 
 const render = (Component: React.FC) => (
   ReactDOM.render(<Component />, document.getElementById('root'))
@@ -8,8 +8,8 @@ const render = (Component: React.FC) => (
 
 declare const module: any;
 
-module.hot.accept('./App', () => {
-  render(require('./App').default);
+module.hot.accept('./components/App', () => {
+  render(require('./components/App').default);
 });
 
 render(App);
